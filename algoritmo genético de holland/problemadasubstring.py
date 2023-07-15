@@ -11,6 +11,9 @@ ind = [[1, 2, 3, 4, 5, 6, 7, 8],
        [1, 2, 3, 4, 5, 6, 7, 8],
        [1, 2, 3, 4, 5, 6, 7, 8]]
 
+adaptacao = []  #guardar a adaptação de cada individuo nesse vetor
+c = 1 #contador de gerações
+
 def gera_populacao(ind):
     for i in range(10):
         for j in range(8):
@@ -73,14 +76,14 @@ def muta(ind):
                     m[j] = ind[i][j]
             #Substitui o cromossomo por sua versão mutada
             ind[i] = m
-
+            adaptacao[i] = calcula_adaptacao(ind, i)
     
 
 #Gera a população inicial aleatoriamente
 gera_populacao(ind)
 
-adaptacao = [] #guardar a adaptação de cada individuo nesse vetor
-for i in range(10):
+#Calcula a adaptação de cada individuo da população inicial
+for i in range(len(ind)):
     adaptacao.append(calcula_adaptacao(ind, i))
 
 #Loop para continuar gerando novos descendentes e os mutando até que haja um cromossomo com 
@@ -93,21 +96,16 @@ while [0, 1, 0, 1, 0, 1, 0, 1] not in ind:
     #Cruza esses indivíduos e gera descendentes
     cruza(ind)
     
+    #Possibilidade de um ou mais da população selecionada mutarem
+    muta(ind)
+
     #Depois de gerar novos descendentes, define os graus de adaptação deles
     for i in range(5, len(ind)):
         adaptacao.append(calcula_adaptacao(ind, i))
     
-    #Seleciona novamente apenas os 5 mais adaptados da população 
-    ind, adaptacao = seleciona(ind, adaptacao)
-    
-    #Possibilidade de um ou mais deles mutarem
-    muta(ind)
-    #Define os graus de adaptação dos novos individuos mutados
-    for i in range(5, len(ind)):
-        adaptacao.append(calcula_adaptacao(ind, 5))
-    
-    print(ind)
+    print('\n', ind)
+    c = c+1
 
 #Printa o cromossomo com a maior substring '01'
 indice = ind.index([0, 1, 0, 1, 0, 1, 0, 1])
-print('\n O indivíduo com maior substring foi encontrado:\n', ind[indice])
+print('\n O indivíduo com maior substring foi encontrado na ' + str(c) + 'ª geração:\n', ind[indice])
