@@ -131,10 +131,6 @@ while 0 not in adaptacao:
 
     c = c+1
     print('\n', adaptacao)
-    for i in range(len(ind)):
-        print(decodifica(ind[i][0:5]))
-        print(decodifica(ind[i][5:]))
-    
 
 #Printa o cromossomo com a maior substring '01'
 indice = adaptacao.index(0)
