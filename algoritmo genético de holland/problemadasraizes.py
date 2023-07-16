@@ -109,7 +109,7 @@ for i in range(len(ind)):
     adaptacao.append(calcula_adaptacao(ind, i))
 
 #Loop para continuar gerando novos descendentes e os mutando até que haja um cromossomo com 
-# adaptação 4 (maior substring)
+# adaptação 0 (raízes da função quadrática)
 while 0 not in adaptacao:
     
     #Seleciona os 5 indivíduos mais adaptados
