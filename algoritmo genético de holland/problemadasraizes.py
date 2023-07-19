@@ -132,6 +132,6 @@ while 0 not in adaptacao:
     c = c+1
     print('\n', adaptacao)
 
-#Printa o cromossomo com a maior substring '01'
+#Printa o cromossomo com as raízes
 indice = adaptacao.index(0)
 print('\n As raízes foram encontradas na ' + str(c) + 'ª geração:\nx1 = ' + str(decodifica(ind[indice][0:5])) + ' e x2 = ' + str(decodifica(ind[indice][5:])))
